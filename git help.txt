@@ -115,6 +115,15 @@ To check commit changes on git hub -> go to repo -> commit -> click on it.
 
 Branches
 
+different ways 
+
+- git branch TA0001
+- git branch //to check branches -- nd active branch with * before it.
+
+- git branch -r  //it will show you branch on remote
+- git branch -a  // to check all the branch (remote+local)
+
+developers mostly use following command for branches
 
 
 
