@@ -125,6 +125,8 @@ different ways
 
 developers mostly use following command for branches
 
+git checkout -b TA0001_discount_calculation //taskid_detailsOfFunctionality
+git checkout -b TA0001_branch_impl
 
 
  
