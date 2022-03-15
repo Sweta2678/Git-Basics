@@ -125,12 +125,4 @@ different ways
 
 developers mostly use following command for branches
 
-
-
- 
-
-
-
-
-
-
+git checkout -b branch_name
