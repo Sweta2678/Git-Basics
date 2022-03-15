@@ -195,6 +195,7 @@ go to pull request -> click on request -> assignee -> add your self
 
 most of use rebase and merge - newly comit added on top of it.
 To change merge option (Pull Requests) ->  disable what you dont needed 
+merge request (term used in gitLab)
 
 got ot pull request -> rebase and merge -> confirm rebase and merge...
 Pull request successfully merged and closed
@@ -220,4 +221,18 @@ fast forward - rebase
 
 git pull (it is combination for the fetch and merge)
 
-merge request (term used in gitLab)
+________________________________
+
+git switch -c "branch_name"
+implement changes
+git add .
+git commit -m "msg"
+git push -u origin branch_name
+
+go to github -> create a pull request -> compare and pull request -> create -> rebase and merge -> confirm request..
+
+gitbash -> master -> git pull
+
+
+
+
