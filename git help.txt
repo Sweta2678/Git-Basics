@@ -126,3 +126,98 @@ different ways
 developers mostly use following command for branches
 
 git checkout -b branch_name
+
+add your impl and commit on branch 
+git add . 
+git commit -m "msg"
+
+check git log on branch 
+
+git log -2 // last two commit 
+git log --all // to check all the logs - as git only shows log for current directory
+git log  branch_name // to check branch specific logs
+
+// change again to master
+after checkout master  
+
+git checkout master
+  
+check all files.. it will show you last commited file, not branch changes.
+
+navigate beween branches ;
+git checkout brnach_name
+
+navigate between commits  :
+git log -3 
+git checkout commit_id (enter 5 number ) --//2676925361988b7cbe70c21f4166fb85afe86ae8 - here 26769 -- git checkout 26769
+
+-- do not commit anything at commit navigation
+
+after that return to the newly created branch --- 
+git checkout brnach_name
+
+and push to remote 
+git push origin -u (branch_name ..remove bracket also) //branch name -- TA0001_branch_impl
+
+check on github web ... you can check new branch with all new commits.
+
+click on insight -> network -> it shows all commit history , even show how many commit ahead new branch..
+
+To remove branch 
+
+git branch -b branch_name
+
+for remote branch needs to remove or delete at that time 
+git push origin --delete branch_name
+
+to switch to master branch :
+git switch master  --- same as git checkout
+
+git switch -c new_branch // here -c for the create 
+
+
+To switch previous branch
+git switch -
+
+
+PULL request (term used in github and bitbucket)
+
+Go to github -> pull request -> new pull request -> [check base <- compare (in base where all changes needed to merge) compare - newly branch from which changes needed to add in main ]
+
+change compare option to newly branch.. and you can check all the difference
+
+after check changes -> create a pull request -> write (add descritpion as per requirement) -> create a pull request button
+
+check all the commit -> commits , file changed -> check review changes
+
+go to pull request -> click on request -> assignee -> add your self 
+
+
+most of use rebase and merge - newly comit added on top of it.
+To change merge option (Pull Requests) ->  disable what you dont needed 
+
+got ot pull request -> rebase and merge -> confirm rebase and merge...
+Pull request successfully merged and closed
+You’re all set—the TA0001_branch_impl branch can be safely deleted. and -> press Delete branch
+
+
+Go to repo-> check branch -> branch was deleted  -> check commits from right corner
+
+To give access of your repo to others...
+settings -> manage access (collaboration) -> add collaborator -> it will send the invitation link to other user.
+
+(fetch, merge, pull)
+
+git fetch  --
+it will fetch all the changes from the remote branch and put it in local repo .. it only check but do not merge .. after fetch you can merge whever you want.
+
+
+after that you have to merge
+git merge 
+
+fast forward - rebase
+
+
+git pull (it is combination for the fetch and merge)
+
+merge request (term used in gitLab)
