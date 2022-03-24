@@ -234,5 +234,390 @@ go to github -> create a pull request -> compare and pull request -> create -> r
 gitbash -> master -> git pull
 
 
+add your impl and commit on branch 
+git add . 
+git commit -m "msg"
+
+check git log on branch 
+
+git log -2 // last two commit 
+git log --all // to check all the logs - as git only shows log for current directory
+git log  branch_name // to check branch specific logs
+
+// change again to master
+after checkout master  
+
+git checkout master
+  
+check all files.. it will show you last commited file, not branch changes.
+
+navigate beween branches ;
+git checkout brnach_name
+
+navigate between commits  :
+git log -3 
+git checkout commit_id (enter 5 number ) --//2676925361988b7cbe70c21f4166fb85afe86ae8 - here 26769 -- git checkout 26769
+
+-- do not commit anything at commit navigation
+
+after that return to the newly created branch --- 
+git checkout brnach_name
+
+and push to remote 
+git push origin -u (branch_name ..remove bracket also) //branch name -- TA0001_branch_impl
+
+check on github web ... you can check new branch with all new commits.
+
+click on insight -> network -> it shows all commit history , even show how many commit ahead new branch..
+
+To remove branch 
+
+git branch -b branch_name
+
+for remote branch needs to remove or delete at that time 
+git push origin --delete branch_name
+
+to switch to master branch :
+git switch master  --- same as git checkout
+
+git switch -c new_branch // here -c for the create 
+
+
+To switch previous branch
+git switch -
+
+
+PULL request (term used in github and bitbucket)
+
+Go to github -> pull request -> new pull request -> [check base <- compare (in base where all changes needed to merge) compare - newly branch from which changes needed to add in main ]
+
+change compare option to newly branch.. and you can check all the difference
+
+after check changes -> create a pull request -> write (add descritpion as per requirement) -> create a pull request button
+
+check all the commit -> commits , file changed -> check review changes
+
+go to pull request -> click on request -> assignee -> add your self 
+
+
+most of use rebase and merge - newly comit added on top of it.
+To change merge option (Pull Requests) ->  disable what you dont needed 
+
+got ot pull request -> rebase and merge -> confirm rebase and merge...
+Pull request successfully merged and closed
+You’re all set—the TA0001_branch_impl branch can be safely deleted. and -> press Delete branch
+
+
+Go to repo-> check branch -> branch was deleted  -> check commits from right corner
+
+
+(fetch, merge, pull)
+
+To give access of your repo to others...
+settings -> manage access (collaboration) -> add collaborator -> it will send the invitation link to other user.
+ 
+
+
+
+
+merge request (term used in gitLab)
+---------------------------------------------
+
+git rebase and git merge --
+
+git reset --hard HEAD~1
+
+reset will reset git repo
+--hard  it will remove all the changes other than that commit 
+HEAD - pointer to particular commit
+~1 means - reset from the 1 commit
+
+it will set pointer commit to master..
+then run command 
+
+git pull --rebase origin master
+
+
+conflict appear , then resolve manually,
+
+conflict look like
+ * branch            master     -> FETCH_HEAD
+error: could not apply ce7ad12... TA005 task courusel changes in home.html
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply ce7ad12... TA005 task courusel changes in home.html
+Auto-merging webcontent/home.html
+CONFLICT (content): Merge conflict in webcontent/home.html
+
+after edit file save and add to staging area.
+
+git rebase --continue
+
+to exit from vim -- :qa and press enter 
+
+then git push 
+
+it will not allow to push as local and remote has different git commit history..
+as we lear the merge conflict in local, tell remote git to which one is correct by using following command.
+
+git push -f //f means force... be careful... 
+
+
+RULES :
+
+Always create branches from amster
+Force update and change commit history only on your branches
+use --force-with-lease instead of -f
+Always rebase on the origin branch before creating a pull request
+
+
+git commit --amend --no-edit //it will add commit without changing commit msg
+
+
+to change the commit msg-- not for the latest commit.. for the particular commit
+
+git rebase -i HEAD~3
+
+then whatever commit you need to change --- remove pick and add r in that and save file...
+
+after save file it will open new file to edit commit message ,,, change commit msg and save 
+
+check git log -3
+
+you can see your changes
+
+To combine more than 2 commit in single commit--- if you have many commits for same functonality --- combining commit is good for commit tree history also.
+
+Squash message..
+
+type s infront of message- remove pick. which you want to merge. then save .. new file will open.. you can change message there.
+
+check git log -3
+
+
+
+When to use RESET
+
+undo last changes
+change commit history
+restore state of the remote branch
+restore state of the branch after unsuccessful rebase
+
+
+Reset option 
+
+git reset --hard
+soft  -- it will store data upto staging data
+mixed -- working tree
+hard -- it is set to the last commit and every changes after that removed..
+
+git status
+git log -3
+git reset --soft "commit_id" -- head will go there... 
+git log -3
+git status  // you can see your changes are there in staging area...
+
+git reset --mixed commit_id // mixed is default mode.. if you remove --mixed, then also it will get the mixed reset
+
+git reset --hard commit_id // delete all the changes 
+
+
+before rest command ,
+
+check 
+git fetch --all
+git log -3
+git reset --hard origin/master
+
+Git Stash :::::::::
+
+When to use :
+temporaly put work aside
+apply the same changes on multiple branches
+create new branch based on the current changes later.
+
+
+git switch -c new_branch
+do changes...
+you have to work on other task so you need to stash changes.
+
+git stash
+git status -- working tree is clear.
+
+git switch - //it will go to previous branch - here it is master.
+
+create new branch for new task,
+git switch -c new_branch_TA007
+
+here you can not see your stash changes,
+to check stashed changes,,,
+
+git stash apply
+git status 
+
+to check all the stash -- means if you have stash changes on many branches
+git stash list
+
+for specific stash changes::
+
+git stash apply stash_name //here stash_name =  stash@{1}
+
+
+sometime you will get below mentioned msg :::
+[
+$ git stash apply stash@{0}
+error: Your local changes to the following files would be overwritten by merge:
+        webcontent/home.html
+Please commit your changes or stash them before you merge.
+Aborting
+]
+
+you get this error, becaue you aplied changes already. commit them
+
+direct commit , without add in stage
+git commit -a -m "any_msg"
+
+
+how to remove stash from stash list..
+git stash pop -- it will first/recently added stash.
+
+_________________________________________
+
+if working tree is clean, and new file needed to stash in current branch. git can not stash untracked file,
+
+git stash won't work... to stash those changes into git... following command can be used
+
+git stash -u //u means untracked file.
+git stash -a // a means all - it also can be used 
+
+stash worked on LIFO -stack..
+
+
+create stash to create new branch
+
+git stash branch "branch_name" stash_id. //if no stash_id mention than it will take first one... stash@{0} as stash store data in stack. LIFO manner.
+
+after creating new -- if you do not want to delete stash but be on new branch 
+ git stash drop stash_id
+ 
+ To clear stash list :: git stash clear
+ 
+ 
+ Git Reflog
+
+
+git reset --hard HEAD~2
+
+to check commit history and head pointer and how it is look like... all the history 
+
+git reflog
+
+with full historical data 
+
+git log -g //it is reflog with extra informations
+
+.....
+
+to create branch from lost data-- hard reset or delete data..
+
+git branch branch_name(lost_changes) log_id/commit_id
+
+
+
+to check reflog last hour instead of all
+
+git reflog --since="1.hour" //can use day instead of hour
+
+git reset --hard HEAD@{2}.. to set head to particular commit.and voila you can see your data restored. check git log -3
+
+
+Git Cherry-pick --- 
+move commit between branches
+
+-when to use :
+deliver hotfix to enduser as fast as possible
+undoing changes and restoring lost commits
+regular team collaboration 
+
+git log --oneline -3
+
+new branch 
+git cherry-pick commit_id
+
+if commit comflict, then 
+
+resolve conflicts,, then git cherry-pick --continue
+save file and closed
+
+check commit history,, you can check - both the commit are different but , new one is copy of older one.
+
+something wrong during cherry-piick
+
+then abort
+git cherry-pick --abort
+
+you can cherry-pick multiple commit in single one.
+git cherry-pick commit_id commit_id ...
+
+
+BEST PRACTICES OF USING CHERRY-PICK
+Rules:
+1. Prefer merge or rebase when possible 2. Avoid creating any duplication
+3. Use 'x' option during cherry-pick
+git cherry-pick -x
+
+[
+COMMIT_EDITMSG - Notepad File Edit Format View Help styles for login button are implemented
+(cherry picked from commit ec6b5ece4fec243c87df4458726ddød22c8deabo)
+]
+
+ 
+
+
+Clone :
+
+To clone remote repository, please, follow next steps:
+
+- Open the repository that you want to clone, for example, open my repository for my Java students here - https://github.com/AndriiPiatakha/learnit_java_core
+
+- On the github, find green button with the 'Code' text on it.
+Select the protocol that you want to use during the cloning git repository. You can select either HTTPS or SSH. Please, take a look at the screenshot.
+
+- copy the string with address to the clipboard.
+
+- navigate in your filesystem where you want to clone your repository
+- open gitbash in that directory and type the next:
+
+git clone <HERE PASTE THE STATE OF YOUR CLIPBOARD>
+
+$ git clone https://github.com/AndriiPiatakha/learnit_java_core.git
+
+- Press enter button
+
+- Congratulations! You have just cloned the remote repository!
+
+Add Git in Eclipse ::::::::::::::::::::::::
+
+Windows -> show View -> others -> GIt -> select desire views(Git Reflog,GIt repositories,Git staging) -> open
+
+open git bash in eclispe :
+click on project and thern terminal...-> select Git Bash.-> here you are...
+
+
+git related buttons in menubar -. windows -> perspectie-> customize perspective -> action set availability-> git -> check button...
+go to toolbar visibility -> git -> check checkbox is checked or not -> apply/closed
+
+mostly use git clone in repo and add local repo to eclipse workspace.... all the options are available.
+
+
+Git staging explore
+Git reflog explore
+>
+Git conflict in eclipse-> eclipse highlight with the red dote.->
+
+go to filw hwich has conflict -> right click-> merge tool
+
 
 
